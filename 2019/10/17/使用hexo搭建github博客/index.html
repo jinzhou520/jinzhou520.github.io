@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang=cn>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="keywords" content>
+  
+    <link rel="icon" href>
+  
+    
+  <title>使用hexo搭建github静态博客 | Palace in the Sky</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>Palace in the Sky</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>使用hexo搭建github静态博客</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2019/10/17</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/github/">github</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#hexo" class='tag'>hexo</a>
+
+  <a href="/tags/#gitpages" class='tag'>gitpages</a>
+
+
+            
+          </div>
+          <h2 id="创建-github-repo"><a href="#创建-github-repo" class="headerlink" title="创建 github repo"></a>创建 github repo</h2><ol>
+<li>登录 github.com;</li>
+<li>点击 New repository;</li>
+<li>创建名称为 username.github.io的仓库，此处的username为github右上角显示的登录名，可以在Settings里修改;</li>
+</ol>
+<h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h2><ol>
+<li><p>安装 nodejs</p>
+<pre><code>// mac 上安装
+$ brew install node
+// Ubuntu 上安装
+$ sudo apt-get install nodejs npm</code></pre></li>
+<li><p>查看是否安装成功</p>
+<pre><code>$ node -v
+$ npm -V</code></pre></li>
+<li><p>安装 hexo</p>
+<pre><code>$ npm install hexo-cli -g
+// 查看版本
+$ hexo -v</code></pre></li>
+</ol>
+<h2 id="创建写博客环境"><a href="#创建写博客环境" class="headerlink" title="创建写博客环境"></a>创建写博客环境</h2><pre><code>    // 初始化目录
+    $ hexo init blog
+    $ cd blog
+    // 安装所需插件
+    $ npm install
+    //////////////////////
+    // 写新文章
+    $ hexo now post &quot;文章名称&quot;
+    // 启动 webserver
+    $ hexo s
+
+文章路径： blog/source/_post/文章名称.md</code></pre><h2 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h2><p>在 _config.yml 文件末尾，有一个 deploy 配置</p>
+<pre><code>deploy:
+    type: git
+    repository: git@github.com:username/username.github.io
+    branch: master</code></pre><p>发布博客到github</p>
+<pre><code>$ hexo d -g</code></pre><h2 id="修改-hexo-主题"><a href="#修改-hexo-主题" class="headerlink" title="修改 hexo 主题"></a>修改 hexo 主题</h2><p>在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 中找到自己喜欢的主题，然后点击它的名字，就会跳转到对应的主题 repo （点击图片就会跳转到主题的预览），把这个 repo 克隆到 blog/themes/主题名称 (这里的主题名称最好和网站的一致)</p>
+<p>例：</p>
+<pre><code>// 安装 Aath 主题
+$ git clone -b master https://github.com/lewis-geek/hexo-theme-Aath.git themes/aath
+// 安装主题依赖（一般在项目主页的说明中会说明需要安装哪些依赖）
+$ npm install --save hexo-renderer-sass
+// 然后修改 _config.yml 中的主题名称即可
+// 至于更详细的配置，则要查看对应主题帮助文档 和 hexo 的帮助文档</code></pre><p>Happy yourself！</p>
+
+        </section>
+    </article>
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-github-repo"><span class="toc-number">1.</span> <span class="toc-text">创建 github repo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-hexo"><span class="toc-number">2.</span> <span class="toc-text">安装 hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建写博客环境"><span class="toc-number">3.</span> <span class="toc-text">创建写博客环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到github"><span class="toc-number">4.</span> <span class="toc-text">发布到github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-hexo-主题"><span class="toc-number">5.</span> <span class="toc-text">修改 hexo 主题</span></a></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2019 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>
