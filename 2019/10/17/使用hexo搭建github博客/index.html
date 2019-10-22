@@ -114,8 +114,13 @@ $ hexo -v</code></pre></li>
 <pre><code>deploy:
     type: git
     repository: git@github.com:username/username.github.io
-    branch: master</code></pre><p>发布博客到github</p>
-<pre><code>$ hexo d -g</code></pre><h2 id="修改-hexo-主题"><a href="#修改-hexo-主题" class="headerlink" title="修改 hexo 主题"></a>修改 hexo 主题</h2><p>在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 中找到自己喜欢的主题，然后点击它的名字，就会跳转到对应的主题 repo （点击图片就会跳转到主题的预览），把这个 repo 克隆到 blog/themes/主题名称 (这里的主题名称最好和网站的一致)</p>
+    branch: master</code></pre><p>使用 hexo deploy ，还需要安装一个插件，在 hexo blog 目录下执行安装命令</p>
+<pre><code>$ npm install hexo-deployer-git --save</code></pre><p>清理缓存</p>
+<pre><code>$ hexo clean</code></pre><p>生成静态博客</p>
+<pre><code>$ hexo g</code></pre><p>发布博客到github</p>
+<pre><code>$ hexo d
+// 或者执行：生成并发布
+$ hexo d -g</code></pre><h2 id="修改-hexo-主题"><a href="#修改-hexo-主题" class="headerlink" title="修改 hexo 主题"></a>修改 hexo 主题</h2><p>在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 中找到自己喜欢的主题，然后点击它的名字，就会跳转到对应的主题 repo （点击图片就会跳转到主题的预览），把这个 repo 克隆到 blog/themes/主题名称 (这里的主题名称最好和网站的一致)</p>
 <p>例：</p>
 <pre><code>// 安装 Aath 主题
 $ git clone -b master https://github.com/lewis-geek/hexo-theme-Aath.git themes/aath
